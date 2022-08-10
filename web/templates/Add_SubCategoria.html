@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Change balance - Flask</title>
+</head>
+<body>
+<h3>Categoria {{ params.get("super_Categoria") }}</h3>
+    <form action="add/sub_categoria" method="post">
+        <p><input type="hidden" name="super_Categoria" value="{{
+        params.get('super_Categoria') }}"/></p>
+        <p>Nome da Sub_Categoria: <input type="text" name="sub_Categoria"/></p>
+        <p><input type="submit" value="Submit"/></p>
+    </form>
+</body>
+</html>

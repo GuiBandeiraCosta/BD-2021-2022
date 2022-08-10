@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>List Categoria - Flask</title>
+</head>
+<body style="padding:20px">
+{% if produto %}
+    <table border="2px">
+        <caption>Produto </caption>
+        <thead>
+            <tr>
+                <th>Ean</th>
+                <th>Categoria</th> 
+                <th>Descricao</th>              
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in produto %}
+            <tr>
+                <td>{{ record[0] }}</td>
+                <td>{{ record[1] }}</td>
+                <td>{{ record[2] }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% else %}
+    <p> Erro: ao obter dados da base de dados!</p>
+{% endif %}
+
+{% if retalhista %}
+    <table border="2px" style="margin-top:-150px; margin-left:280px;">
+        <caption>Retalhista </caption>
+        <thead>
+            <tr>
+                <th>Tin</th>
+                <th>Nome</th>             
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in retalhista %}
+            <tr>
+                <td>{{ record[0] }}</td>
+                <td>{{ record[1] }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% else %}
+    <p> Erro: ao obter dados da base de dados!</p>
+{% endif %}
+
+{% if responsavel_por %}
+    <table border="2px" style="margin-top:-150px; margin-left:510px;">
+        <caption>Responsavel por </caption>
+        <thead>
+            <tr>
+                <th>Nome Categoria</th>
+                <th>Tin</th>  
+                <th>Num Serie</th>   
+                <th>Fabricante</th>              
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in responsavel_por %}
+            <tr>
+                <td>{{ record[0] }}</td>
+                <td>{{ record[1] }}</td>
+                <td>{{ record[2] }}</td>
+                <td>{{ record[3] }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% else %}
+    <p> Erro: ao obter dados da base de dados!</p>
+{% endif %}
+
+<h3>Adicionar Retalhista </h3>
+    <form action="add/retalhista" method="post">
+        <p>Tin do Retalhista: <input type="number" name="tin_Retalhista"/></p>
+        <p>Nome do Retalhista: <input type="text" name="nome_Retalhista"/></p>
+        <p>Produtos Associados(Escrever eans separados por '/'  ex:1/2/3): <input type="text" name="Produtos"/></p>
+        <p><input type="submit" value="Submit"/></p>
+    </form>
+<h3>Remover Retalhista </h3>
+    <form action="remove/retalhista" method="post">
+        <p>tin do Retalhista: <input type="text" name="tin_Retalhista"/></p>
+        <p><input type="submit" value="Submit"/></p>
+    </form>
+</body>
+</html>
